@@ -3,7 +3,7 @@
   "main": ".open-next/worker.js",
   "name": "streaminal",
   "workers_dev": false,
-  "compatibility_date": "2025-09-27",
+  "compatibility_date": "2026-06-20",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
     "directory": ".open-next/assets",
@@ -21,10 +21,4 @@
   "observability": {
     "enabled": true,
   },
-  "r2_buckets": [
-    {
-      "binding": "NEXT_INC_CACHE_R2_BUCKET",
-      "bucket_name": "streaminal-cache",
-    },
-  ],
 }
