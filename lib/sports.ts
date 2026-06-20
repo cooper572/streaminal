@@ -1,6 +1,10 @@
 import { cache } from 'react';
 
-const SPORTS_BASE_URL = process.env.NEXT_PUBLIC_SPORTS_API_URL!.replace(/\/+$/, '');
+const DEFAULT_SPORTS_API_URL = 'https://streamed.pk';
+
+function getSportsBaseUrl(): string {
+  return (process.env.NEXT_PUBLIC_SPORTS_API_URL || DEFAULT_SPORTS_API_URL).replace(/\/+$/, '');
+}
 
 export interface MatchTeam {
   name: string;
@@ -36,7 +40,7 @@ export interface Stream {
 }
 
 async function fetchSports(endpoint: string) {
-  const response = await fetch(`${SPORTS_BASE_URL}${endpoint}`, {
+  const response = await fetch(`${getSportsBaseUrl()}${endpoint}`, {
     cache: 'no-store',
   });
   if (!response.ok) {
@@ -54,5 +58,5 @@ export async function getMatchStreams(source: string, id: string): Promise<Strea
 }
 
 export function getBadgeUrl(id: string): string {
-  return `${SPORTS_BASE_URL}/images/badge/${id}.webp`;
+  return `${getSportsBaseUrl()}/images/badge/${id}.webp`;
 }
